@@ -6,13 +6,11 @@ local function buffer_count()
 
   for _, buf in ipairs(bufs) do
     local bufname = vim.api.nvim_buf_get_name(buf)
-    local readonly = vim.api.nvim_buf_get_option(buf, 'readonly')
     local listed = vim.api.nvim_buf_get_option(buf, 'buflisted')
     local buftype = vim.api.nvim_buf_get_option(buf, 'buftype')
 
     local buf_is_file = vim.api.nvim_buf_is_loaded(buf)
       and (bufname ~= '')
-      and (not readonly)
       and (listed)
       and (buftype ~= 'terminal')
       and (buftype ~= 'quickfix')
